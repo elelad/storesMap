@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <!--<link rel="shortcut icon" sizes="196x196" href="src/shufersal.png">-->
+    <link rel="shortcut icon" sizes="196x196" href="src/pinIcon.png">
+    <title>ShuferSal Map</title>
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta name="mobile-web-app-capable" content="yes">-->
+    <!--<link rel="shortcut icon" sizes="196x196" href="question.png">-->
+    <link rel="stylesheet" href="lib/themes/branches.css"/>
+    <link rel="stylesheet" href="lib/themes/jquery.mobile.icons.min.css"/>
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js" type="application/javascript" rel="script"></script>-->
+    <!--<script src="https://code.jquery.com/jquery-migrate-3.0.0.min.js" type="application/javascript" rel="script"></script>-->
+    <!--<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css">-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"
+            type="application/javascript" rel="script"></script>
+    <link href="storesMap.css" rel="stylesheet" type="text/css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEY_UkQdz4cJtAFIInxcaCcc0uNAI1d7U&language=he"></script>
+    <!--<script src="markerclusterer.js" type="application/javascript" rel="script"></script>-->
+    <script src="storesMap.js" type="application/javascript" rel="script"></script>
+
+</head>
+<body>
+
+<div data-role="page" id="home" data-theme="a">
+    <!--Menu Panel-->
+    <div data-role="panel" id="pMenu" data-position="right">
+        <span>תפריט</span>
+        <ul data-role="listview" class="dirRtl">
+            <li data-role="collapsible" data-iconpos="left" data-inset="false" class="dirRtl" style="width: 100%">
+                <h4>תפריט</h4>
+                <ul data-role="listview" data-theme="b" class="dirRtl">
+                    <li class="dirRtl">a</li>
+                    <li class="dirRtl">b</li>
+                    <li class="dirRtl">c</li>
+                </ul>
+            </li>
+
+
+        </ul>
+        <!-- panel content goes here -->
+    </div>
+    <!--Tabs-->
+    <div data-role="tabs" id="tabs">
+        <!--Header-->
+        <div data-role="header" data-position="fixed" data-tap-toggle="false" data-hide-during-focus="false"
+        style="border-top-left-radius: 0; border-top-right-radius: 0;">
+            <h1>סניפי שופרסל</h1>
+            <a id="bRefresh" href="#" onclick="Sh.refresh()" data-role="button" data-icon="refresh"
+               data-iconpos="notext" data-inline="true" class="ui-nodisc-icon ui-alt-icon ui-shadow">refresh</a>
+            <a id="bSpinner" href="#" data-inline="true">&nbsp;</a>
+            <!--<img id="imgSpinner" src="src/ajax-loader.gif"/>-->
+            <!--<a id="bSave" href="#pMenu" onclick=""
+               class="ui-btn ui-icon-bars ui-btn-icon-notext ui-btn-corner-all">menu</a>-->
+            <div data-role="navbar">
+                <ul>
+                    <li><a href="#pMap" id="bNavBarMapBtn" data-ajax="false" class="ui-btn-active">מפה</a></li>
+                    <li><a href="#pSearch" id="bNavBarSearchBtn" data-ajax="false">חיפוש</a></li>
+                    <!--<li><a href="#pPhoneBook" id="bNavBarPhoneBookBtn" data-ajax="false">טלפונים</a></li>-->
+                </ul>
+            </div>
+        </div>
+        <!--Map tab-->
+        <div id="pMap" class="ui-content">
+            <div id="mMap"></div>
+        </div>
+        <!--Search tab-->
+        <div id="pSearch" class="ui-content">
+            <div class="ui-filterable" data-warrper-class="dirRtl">
+                <input id="autocomplete-input" data-type="search" placeholder="חפש סניף..."
+                       style="direction: rtl; text-align: right;">
+            </div>
+            <ul id="searchListView" data-inset="true" data-role="listview" data-filter="true" data-filter-reveal="true"
+                data-input="#autocomplete-input" data-theme="c">
+            </ul>
+            <div id="mSearch">
+            </div>
+        </div>
+        <!--Phone book tab-->
+        <!--<div id="pPhoneBook" class="ui-content">
+            <div class="ui-filterable" data-warrper-class="dirRtl">
+                <input id="autocompleteAddressBook-input" data-type="search" placeholder="חפש מנהל..."
+                       style="direction: rtl; text-align: right">
+            </div>
+            <ul id="addressBookListView" data-inset="true" data-role="listview" data-filter="true"
+                data-filter-reveal="false" data-theme="c"
+                data-input="#autocompleteAddressBook-input">
+            </ul>
+        </div>-->
+    </div>
+
+    <!--popup branch details-->
+    <div data-role="popup" id="branchPopup" data-theme="b"
+         style="width: 25%; min-width: 300px; direction: rtl; text-align: right; position: fixed; left: 50%; top: 25%; transform: translate(-50%, -25%)">
+        <a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right ui-alt-icon ui-nodisc-icon">Close</a>
+        <div data-role="header" class="ui-corner-all ui-shadow">
+
+            <h1 id="sNum"></h1>
+        </div>
+        <div data-role="main">
+            <ul class="snifDetails ui-nodisc-icon">
+                <li>שם הסניף: <span id="sName"></span></li>
+                <li>כתובת: <span id="sAddress"></span></li>
+                <li>מנהל: <span id="sManager"></span></li>
+                <li>נייד: <span id="sMangerPhone"></span><a id="sCallPhone" href="#" data-role="button"
+                                                            data-icon="phone" data-iconpos="notext" data-inline="true"
+                                                            class="ui-nodisc-icon ui-alt-icon ui-shadow"></a>
+                    <a id="sSendMail" href="#" data-role="button" data-icon="mail" data-iconpos="notext"
+                       data-inline="true" class="ui-nodisc-icon ui-alt-icon ui-shadow"></a>
+                </li>
+            </ul>
+            <div style="text-align: center">
+                <a id="bShowOnMap"
+                   class="ui-btn ui-btn-inline ui-icon-location ui-btn-icon-left ui-btn-corner-all ui-shadow ui-alt-icon">Map</a>
+                <a id="bToWaze" href="#"
+                   class="ui-btn ui-btn-inline ui-icon-navigation ui-btn-icon-left ui-btn-corner-all ui-shadow ui-alt-icon">Waze</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--<div data-role="page" id="settings" data-theme="a">
+        <label for="bDrag">Drag Markers</label><a href="#" id="bDrag" data-role="checkbox"></a>
+</div>-->
+
+<script></script>
+</body>
+</html>

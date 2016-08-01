@@ -1,0 +1,77 @@
+#home, #tabs {
+    width: 100%;
+    /*height: 100%;*/
+    height: calc(100% - 79px);
+    padding: 0;
+    text-align: center;
+    /*direction: rtl;*/
+}
+
+#mMap {
+    position : absolute !important;
+    padding: 0;
+    top : 0 /*80px !important*/;
+    right : 0;
+    bottom : 0 !important;
+    left : 0 !important;
+    text-align: center;
+    width: 100%;
+    height: calc(100% + 79px);
+    /*height: 500px;*/
+    /*margin-left: 50%;
+    transform: translate(-50%, 0);*/
+
+}
+
+.controlgroup-textinput {
+    padding-top: .22em;
+    padding-bottom: .22em;
+}
+
+.dirRtl{
+    direction: rtl;
+    text-align: right;
+}
+
+.snifDetails li{
+    line-height: 1.8em;
+
+}
+
+#pMenu{
+    background-color: rgba(0,0,0,0.7);
+    color: white;
+}
+
+.ui-listview .ui-li-aside {
+    position: absolute;
+    top: 1em;
+    left: 1.333em;
+    margin: 0;
+    text-align: left;
+}
+
+@media (min-width:1025px){
+    .ui-filterable{
+        max-width: 350px;
+        margin-left: 50%;
+        transform: translate(-50%);
+    }
+    #searchListView, #addressBookListView{
+        max-width: 800px;
+        margin-left: 50%;
+        transform: translate(-50%);
+    }
+}
+
+#bSpinner{
+    background-image: url("src/ajax-loader.gif");
+    background-size: 19px;
+    background-repeat: no-repeat;
+    background-position: center;
+    /*width: 19px;
+    height: 19px;*/
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}

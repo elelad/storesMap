@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "stores": [
+    {
+      "bId": 1,
+      "bName": "תא- בן יהודה",
+      "bManager": "שם המנהל",
+      "bManagerPhone": "123-456789",
+      "bAddress": "בן יהודה 79  ",
+      "bCity": " תל אביב -יפו ",
+      "bFormat": 7,
+      "bLat": 32.0814565,
+      "bLon": 34.7706775
+    },
+    {
+      "bId": 2,
+      "bName": " תא- ארלוזורוב",
+      "bManager": "שם המנהל",
+      "bManagerPhone": "123-456789",
+      "bAddress": " ארלוזורוב 53  ",
+      "bCity": " תל אביב -יפו ",
+      "bFormat": 7,
+      "bLat": 32.086016,
+      "bLon": 34.7787875
+    },
+    {
+      "bId": 3,
+      "bName": " תא- נורדאו",
+      "bManager": "שם המנהל",
+      "bManagerPhone": "123-456789",
+      "bAddress": " אבן גבירול 157  ",
+      "bCity": " תל אביב -יפו ",
+      "bFormat": 7,
+      "bLat": 32.0912904,
+      "bLon": 34.7828505
+    },
+    {
+      "bId": 4,
+      "bName": " תא- צהל",
+      "bManager": "שם המנהל",
+      "bManagerPhone": "123-456789",
+      "bAddress": " צה",
+      "bCity": " תל אביב -יפו ",
+      "bFormat": 7,
+      "bLat": 32.1227143,
+      "bLon": 34.8295488
+    },
+    {
+      "bId": 5,
+      "bName": " תא- ברזיל",
+      "bManager": "שם המנהל",
+      "bManagerPhone": "123-456789",
+      "bAddress": " ברזיל 15  ",
+      "bCity": " תל אביב -יפו ",
+      "bFormat": 7,
+      "bLat": 32.1113542,
+      "bLon": 34.7963839
+    },
+    {
+      "bId": 6,
+      "bName": " תא- רמת אביב ג",
+      "bManager": "שם המנהל",
+      "bManagerPhone": "123-456789",
+      "bAddress": " אחימאיר אבא 1  ",
+      "bCity": " תל אביב -יפו ",
+      "bFormat": 7,
+      "bLat": 32.1250386,
+      "bLon": 34.7984045
+    }
+  ]
+}
